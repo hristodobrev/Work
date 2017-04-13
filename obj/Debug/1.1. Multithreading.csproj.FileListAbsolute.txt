@@ -1,6 +1,0 @@
-c:\users\c.dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\bin\Debug\_1._1.Multithreading.exe.config
-c:\users\c.dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\bin\Debug\_1._1.Multithreading.exe
-c:\users\c.dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\bin\Debug\_1._1.Multithreading.pdb
-c:\users\c.dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\obj\Debug\1.1. Multithreading.csprojResolveAssemblyReference.cache
-c:\users\c.dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\obj\Debug\_1._1.Multithreading.exe
-c:\users\c.dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\obj\Debug\_1._1.Multithreading.pdb

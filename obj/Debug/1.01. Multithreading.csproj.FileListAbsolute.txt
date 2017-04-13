@@ -1,5 +1,0 @@
-C:\Users\C.Dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\bin\Debug\_1._1.Multithreading.exe.config
-C:\Users\C.Dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\obj\Debug\_1._1.Multithreading.exe
-C:\Users\C.Dobrev\documents\visual studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\obj\Debug\_1._1.Multithreading.pdb
-C:\Users\C.Dobrev\Documents\Visual Studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\bin\Debug\_1._1.Multithreading.exe
-C:\Users\C.Dobrev\Documents\Visual Studio 2013\Projects\01. Managing Program Flow\1.1. Multithreading\bin\Debug\_1._1.Multithreading.pdb
