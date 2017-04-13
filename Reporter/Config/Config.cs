@@ -2,6 +2,6 @@
 {
     public static class Config
     {
-        public static string DBFolder = "/db";
+        public static string DBFolder = "db";
     }
 }

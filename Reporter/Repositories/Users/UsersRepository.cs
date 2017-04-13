@@ -56,6 +56,8 @@ namespace Reporter.Repositories.Users
             users.Add(item);
 
             records = this.serializer.Serialize(users);
+
+            this.writer.WriteText(records);
         }
 
         public IEnumerable<User> GetAllItems()

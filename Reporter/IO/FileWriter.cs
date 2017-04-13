@@ -1,7 +1,6 @@
-﻿using Reporter.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
+
 namespace Reporter.IO
 {
     public class FileWriter : IWriter
@@ -15,15 +14,15 @@ namespace Reporter.IO
         public string FolderName { get; set; }
 
         public string FileName { get; set; }
-        
-        public void WriteLine(string line)
+
+        public void WriteText(string text)
         {
-            string fileName = Path.Combine(this.FolderName, this.FileName);
-            
-            using (StreamWriter fw = File.AppendText(fileName))
-            {
-                fw.WriteLine(line);
-            }
+            string directoryName = string.Format(@"{0}/{1}", Config.Config.DBFolder, this.FolderName);
+            Directory.CreateDirectory(directoryName);
+
+            string fileName = string.Format(@"{0}/{1}", directoryName, this.FileName);
+
+            File.WriteAllText(fileName, text);
         }
     }
 }

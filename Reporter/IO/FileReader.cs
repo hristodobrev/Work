@@ -19,8 +19,10 @@ namespace Reporter.IO
 
         public string Read()
         {
-            string fileName = Path.Combine(this.FolderName, this.FileName);
-
+            string directoryName = string.Format(@"{0}/{1}", Config.Config.DBFolder, this.FolderName);
+            Directory.CreateDirectory(directoryName);
+            string fileName = string.Format(@"{0}/{1}", directoryName, this.FileName);
+            
             if (!File.Exists(fileName))
             {
                 return "";

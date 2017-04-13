@@ -4,10 +4,20 @@
         Title="Reporter" Height="350" Width="525">
     <Grid>
         <Label Content="Username" HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txt_username" HorizontalAlignment="Left" Height="23" Margin="77,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_register_username" HorizontalAlignment="Left" Height="23" Margin="77,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" KeyUp="Register_Username_KeyUp"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="9,38,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txt_password" HorizontalAlignment="Left" Height="23" Margin="77,41,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txt_register_password" HorizontalAlignment="Left" Height="23" Margin="77,41,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" KeyUp="Register_Password_KeyUp"/>
         <Button Content="Register" HorizontalAlignment="Left" Margin="77,69,0,0" VerticalAlignment="Top" Width="75" Click="Register_Click"/>
-        <TextBlock Name="users_list" HorizontalAlignment="Left" Height="299" Margin="326,10,0,0" Text="test" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+        <TextBlock Name="users_list" HorizontalAlignment="Left" Height="299" Margin="326,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="9,104,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_login_username" HorizontalAlignment="Left" Height="23" Margin="77,107,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" KeyUp="Login_Username_KeyUp"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="9,132,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_login_password" HorizontalAlignment="Left" Height="23" Margin="77,135,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" KeyUp="Login_Password_KeyUp"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="77,163,0,0" VerticalAlignment="Top" Width="75" Click="Login_Click"/>
+        <Grid Name="user_grid" Visibility="Hidden" Margin="0,188,196,0">
+            <Label Name="username_label" Content="Current User" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label Name="error_label" Content="Error" Foreground="Red" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label Name="current_user_username" HorizontalAlignment="Left" Margin="92,10,0,0" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </Window>
