@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Services</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>Location Service</h3>
+            <p>URL: <em>{{ myUrl }}</em></p>
+        </div>
+
+        <div class="container">
+            <h3>HTTP Service</h3>
+            <p>{{ myWelcome }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Timeout Service</h3>
+            <p>{{ myHeader }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Interval Service</h3>
+            <p>The time now is: {{ theTime }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Custrom Services</h3>
+            <p><input type="number" ng-model="dec" ng-change="changeHex()" /></p>
+            <p>Decimal: {{ dec }}</p>
+            <p>Hexadecimal: {{ hex }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Using Custom Service Inside a Filter</h3>
+            <ul>
+                <li>Dec -> Hex</li>
+                <li ng-repeat="num in numbers">
+                    {{ num }} -> {{ num | hex }}
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/services-controller.js"></script>
+    <script src="services/services-services.js"></script>
+    <script src="filters/services-filter.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+    <style>
+        input.ng-valid {
+            border: 1px solid #68e676;
+        }
+    </style>
+</head>
+<body>
+    <main ng-app="myApp">
+        <div class="container">
+            <form name="form">
+                <h3>Required</h3>
+                <p><input type="text" name="name" ng-model="name" required /></p>
+                <p ng-hide="form.name.$valid">The name status is {{ form.name.$valid }}</p>
+
+                <h3>E-mail</h3>
+                <p><input type="email" name="email" ng-model="email" required/></p>
+                <p>Email untouched: {{ form.email.$untouched }}</p>
+                <p>Email touched: {{ form.email.$touched }}</p>
+                <p>Email pristine: {{ form.email.$pristine }}</p>
+                <p>Email dirty: {{ form.email.$dirty }}</p>
+                <p>Email invalid: {{ form.email.$invalid }}</p>
+                <p>Email valid: {{ form.email.$valid }}</p>
+            </form>
+        </div>
+
+        <div class="container">
+            <h3>Validation Example</h3>
+            <form name="mf" novalidate>
+                <p>Username:</p>
+                <p>
+                    <input type="text" name="usr" ng-model="usr" required />
+                    <span style="color:red" ng-show="mf.usr.$dirty && mf.usr.$invalid">
+                        <span ng-show="mf.usr.$error.required">Username is required.</span>
+                    </span>
+                </p>
+
+                <p>Email:</p>
+                <p>
+                    <input type="email" name="eml" ng-model="eml" required />
+                    <span style="color:red" ng-show="mf.eml.$dirty && mf.eml.$invalid">
+                        <span ng-show="mf.eml.$error.required">Email is required.</span>
+                        <span ng-show="mf.eml.$error.email">Email is invalid.</span>
+                    </span>
+                </p>
+
+                <p>
+                    <input type="submit" ng-disabled="mf.usr.$dirty && mf.usr.$invalid ||
+                           mf.eml.$dirty && mf.eml.$invalid" />
+                </p>
+            </form>
+        </div>
+
+        <div class="container test">
+            <h3>Example</h3>
+            <form name="f">
+                <p>
+                    <label>
+                        Enter name: <br />
+                        <input type="text" name="n" ng-model="n" required />
+                        <span style="color:red" ng-show="f.n.$touched && f.n.$invalid">
+                            The name is required
+                        </span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Enter email: <br />
+                        <input type="email" name="e" ng-model="e" required />
+                        <span style="color:red" ng-show="f.e.$touched && f.e.$invalid">
+                            The email is invalid
+                        </span>
+                    </label>
+                </p>
+            </form>
+        </div>
+
+        <div class="container test">
+            <h3>Custom Validation</h3>
+            <form name="frm">
+                <input name="inpt" ng-model="inpt" required secret>
+            </form>
+
+            <p>The input's valid state is:</p>
+            <p>Required Error: {{frm.inpt.$error.required}}</p>
+            <p>Secret Error: {{frm.inpt.$error.charE}}</p>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="directives/validation-directives.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Data Binding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>HTML View</h3>
+            <p>First name: <span ng-bind="firstName"></span></p>
+            <p>Last name: {{lastName}}</p>
+        </div>
+
+        <div class="container">
+            <h3>The ng-model Directive / Two-way Binding</h3>
+            <p>Name: <input type="text" ng-model="name" /></p>
+            <p ng-show="name">Hello, <em>{{name}}</em></p>
+        </div>
+
+        <div class="container">
+            <h3>AngularJS Controller</h3>
+            <p>
+                Click on the name to change it:
+                <strong class="click" ng-click="changeName()">{{firstName}}</strong>
+            </p>
+        </div>
+    </main>
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/data-binding-controller.js"></script>
+</body>
+</html>

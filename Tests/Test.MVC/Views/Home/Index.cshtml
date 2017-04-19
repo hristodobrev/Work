@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@using ResManager = Test.MVC.Utilities.Localization.ResManager;
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">@ResManager.GetText("aspIntro")</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">@ResManager.GetCaption("LearnMore") »</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+<div class="row" ng-app="PaginationTest" ng-controller="PaginationController as model">
+    <div class="col-md-offset-4 col-md-4">
+        <p ng-repeat="item in model.pagesData">
+            {{ item }}
+        </p>
+        <input type="checkbox" id="acc-num-rev-input" ng-model="model.checkbox" bootstrap-switch checked>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+    (function () {
+        angular.module('PaginationTest', []);
+
+        // Controllers
+        angular.module('PaginationTest')
+        .controller('PaginationController', ['PaginationService', PaginationController]);
+
+        function PaginationController(PaginationService) {
+            var model = this;
+
+            model.pagesData = PaginationService.getPagesData;
+        }
+
+        // Services
+        angular.module('PaginationTest')
+        .factory('PaginationService', ['$http', '$q', PaginationService]);
+
+        function PaginationService($http, $q) {
+            var service = {
+                getPagesData: getPagesData
+            };
+
+            return service;
+
+            function getPagesData() {
+                var deferred = $q.defer();
+
+                $http.get('/Data/GetPagesData')
+                .then(function (success) {
+                    deferred.resolve(success);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+
+                return deferred.promise();
+            }
+        }
+    })();
+</script>

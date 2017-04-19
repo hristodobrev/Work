@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Routing</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp">
+        <div class="container">
+            <a href="#/">Main</a>
+            <a href="#test">Test</a>
+            <a href="#another">Another</a>
+        </div>
+        <div ng-view>
+
+        </div>
+    </main>
+
+    <!--<script src="apps/base-app.js"></script>-->
+    <script>
+        let app = angular.module('myApp', ['ngRoute']);
+
+        app.config(function ($routeProvider) {
+            $routeProvider
+            .when('/', {
+                templateUrl: 'main.html',
+                controller: 'mainController'
+            })
+            .when('/test', {
+                templateUrl: 'test.html',
+                controller: 'testController'
+            })
+            .when('/another', {
+                templateUrl: 'another.html',
+                controller: 'anotherController'
+            })
+            .when('/secret', {
+                template: '<div class="container"><h3>Secret Page!</h3>\
+                    <p>You have accessed a secret page!</p></div>'
+            })
+            .otherwise({
+                template: '<div class="container"><h3>Invalid URL</h3>\
+                    <p>The page you are trying to access does not exist.</p></div>'
+            });
+        });
+
+        app
+            .controller('mainController', function ($scope) {
+                $scope.msg = 'Hello from the main controller.';
+            })
+            .controller('testController', function ($scope) {
+                $scope.msg = 'Hello from the test controller.';
+            })
+            .controller('anotherController', function ($scope) {
+                $scope.msg = 'Hello from another controller.';
+            });
+    </script>
+</body>
+</html>

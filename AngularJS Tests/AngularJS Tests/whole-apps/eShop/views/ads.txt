@@ -1,0 +1,14 @@
+﻿[
+    {
+        "title": "Ground Zero GZRW30 SPL Extreme",
+        "description": "Very powerful subfoower! 1400W, 2x2Ohms, 12"
+    },
+    {
+        "title": "Opel Astra F",
+        "description": "90hpw, 1.6 Mono"
+    },
+    {
+        "title": "Lumia 650",
+        "description": "Very nice phone..."
+    }
+]

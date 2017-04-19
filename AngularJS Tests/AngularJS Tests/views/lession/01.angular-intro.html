@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Intro</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" ng-app="myApp" ng-controller="myCtrl">
+        <h3>My App</h3>
+        <p>Name: <input type="text" ng-model="name" /></p>
+        <p ng-bind="name"></p>
+        <p>{{5 + 210}}</p>
+        <p ng-bind="5 + 210"></p>
+        <p>The name is {{name}}</p>
+        <p>{{firstName}} {{lastName}}</p>
+    </div>
+
+    <div class="container" ng-app="myAnotherApp" ng-controller="myAnotherCtrl">
+        <h3>My Another App</h3>
+        <p>Name: <input type="text" ng-model="name" /></p>
+        <p ng-bind="name"></p>
+        <p>{{5 + 210}}</p>
+        <p>The name is {{name}}</p>
+        <p>{{firstName}} {{lastName}}</p>
+    </div>
+
+    <script>
+        //let app = angular.module('myApp', []);
+        //app.controller('myCtrl', function ($scope) {
+        //    $scope.firstName = 'John';
+        //    $scope.lastName = 'Doe';
+        //});
+
+        angular.module('myApp', []).controller('myCtrl', ['$scope', function ($scope) {
+            $scope.firstName = 'John';
+            $scope.lastName = 'Doe';
+        }]);
+
+        angular.module('myAnotherApp', []).controller('myAnotherCtrl', ['$scope', function ($scope) {
+            $scope.firstName = 'Jane';
+            $scope.lastName = 'Doe';
+        }]);
+    </script>
+</body>
+</html>

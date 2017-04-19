@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular DOM</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>The ng-disabled Directive</h3>
+            <p>
+                <button ng-disabled="btnSwitch">Click Me!</button>
+            </p>
+            <p>
+                <input type="checkbox" ng-model="btnSwitch" /> Button
+            </p>
+            <p>Disabled: {{ btnSwitch }}</p>
+        </div>
+            
+        <div class="container test">
+            <h3>The ng-show Directive</h3>
+            <p ng-bind="time"></p>
+            <p ng-show="minutes % 2 == 1">Minutes are odd</p>
+            <p ng-show="minutes % 2 == 0">Minutes are even</p>
+            <p ng-show="hours < 11">Good morning!</p>
+            <p ng-show="hours >= 11 && hours < 17">Good afternoon!</p>
+            <p ng-show="hours > 17">Good evening!</p>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/dom-controller.js"></script>
+</body>
+</html>

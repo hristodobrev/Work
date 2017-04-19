@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <ul id="messages"></ul>
+        <form id="chatform">
+            <input type="text" id="inputbox" class="form-control" />
+        </form>
+    </div>
+</div>
+
+<script id="requestsWorker" type="text/javascript">
+    (function () {
+        onmessage = function (e) {
+            var obj = JSON.parse(e.data);
+
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.open('POST', 'http://localhost:17536/Home/AddMessage', true);
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhttp.send("message=" + obj.msg);
+        }
+
+        var messages = [];
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                var data = JSON.parse(xhttp.responseText);
+                if (data.messages.length != messages.length) {
+
+                    var newMessages = data.messages.slice(messages.length);
+
+                    messages = data.messages;
+                    postMessage({ messages: newMessages });
+                }
+
+                setTimeout(function () {
+                    xhttp.open('GET', 'http://localhost:17536/Home/GetMessages', true);
+                    xhttp.send();
+                }, 1000);
+            }
+        };
+
+        xhttp.open('GET', 'http://localhost:17536/Home/GetMessages', true);
+        xhttp.send();
+    })();
+</script>
+
+<script>
+    $(document).ready(function () {
+        var username = 'test';
+
+        var blob = new Blob([
+          document.querySelector('#requestsWorker').textContent
+        ], { type: "text/javascript" })
+
+        var worker = new Worker(window.URL.createObjectURL(blob));
+
+        worker.onmessage = function (e) {
+            for (var i = 0; i < e.data.messages.length; i++) {
+                $('#messages').append('<li>' + e.data.messages[i] + '</li>');
+            }
+        };
+
+        $('#chatform').submit(function (event) {
+            worker.postMessage(JSON.stringify({ msg: $('#inputbox').val(), sender: username }));
+            $('#inputbox').val('');
+            event.preventDefault();
+        });
+    });
+</script>
+
+@*<script>
+            $(document).ready(function () {
+                var username = prompt('Please enter a username:');
+
+                var uri = 'ws://localhost:17536/Chat/Get' + '?username=' + username;
+                websocket = new WebSocket(uri);
+
+                websocket.onopen = function () {
+                    $('#messages').prepend('<div>Connected.</div>');
+
+                    $('#chatform').submit(function (event) {
+                        websocket.send($('#inputbox').val());
+                        $('#inputbox').val('');
+                        event.preventDefault();
+                    });
+                };
+
+                websocket.onerror = function (event) {
+                    $('#messages').prepend('<div>ERROR</div>');
+                };
+
+                websocket.onmessage = function (event) {
+                    $('#messages').prepend('<div>' + event.data + '</div>');
+                };
+            });
+    </script>*@

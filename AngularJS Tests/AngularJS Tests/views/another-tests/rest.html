@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>REST Tests</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body ng-app="Phonebook" ng-controller="PhonebookController as model">
+    <h1>Phonebook</h1>
+    <fieldset>
+        <legend>Contacts</legend>
+        <p id="contacts">
+        </p>
+        <button ng-click="model.getContacts()">Load Contacts</button>
+    </fieldset>
+    <fieldset>
+        <legend>Add Contact</legend>
+        <p>
+            <input type="text" id="name" placeholder="Enter name..." />
+            <input type="text" id="phone" placeholder="Enter phone..." />
+            <button ng-click="model.addContact()">Add</button>
+        </p>
+    </fieldset>
+
+    <script>
+        (function () {
+            angular.module('Phonebook', []);
+
+            angular.module('Phonebook')
+            .controller('PhonebookController', PhonebookController);
+
+            function PhonebookController() {
+                let model = this;
+
+                model.addContact = function () {
+                    let request = {
+                        method: 'POST',
+                        url: 'https://phonebook-69dab.firebaseio.com/.json',
+                        data: JSON.stringify({
+                            person: $('#name').val(),
+                            phone: $('#phone').val()
+                        }),
+                        success: function (data) {
+                            model.keys = Object.keys(data);
+                            model.data = data;
+                            $('#name').val('');
+                            $('#phone').val('');
+                            model.getContacts();
+                        },
+                        error: function (error) {
+                            model.error = error;
+                        }
+                    };
+
+                    $.ajax(request);
+                };
+
+                model.getContacts = function () {
+                    let request = {
+                        method: 'GET',
+                        url: 'https://phonebook-69dab.firebaseio.com/.json',
+                        success: function (data) {
+                            model.keys = Object.keys(data);
+                            model.data = data;
+                            model.updateContacts();
+                        },
+                        error: function (error) {
+                            model.error = error;
+                        }
+                    };
+
+                    $.ajax(request);
+                };
+
+                model.getContacts();
+
+                model.deleteContact = function (key) {
+                    let request = {
+                        method: 'DELETE',
+                        url: 'https://phonebook-69dab.firebaseio.com/' + key + '.json',
+                        success: function () {
+                            model.getContacts();
+                        },
+                        error: function (error) {
+                            model.error = error;
+                        }
+                    };
+
+                    $.ajax(request);
+                };
+
+                model.updateContacts = function () {
+                    $('#contacts').empty();
+                    for (var key of model.keys) {
+                        let person = $('<span>').text(model.data[key]['person']);
+                        let phone = $('<span>').text(model.data[key]['phone']);
+                        let btn = $('<button>Delete</button>')
+                        .on('click', function () {
+                            model.deleteContact(key);
+                        });
+
+                        let p = $('<p>').append(person)
+                        .append(': ')
+                        .append(phone)
+                        .append(btn);
+
+                        $('#contacts').append(p);
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

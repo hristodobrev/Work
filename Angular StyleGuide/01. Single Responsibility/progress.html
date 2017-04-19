@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Progressbar</title>
+    <script src="https://cdn.edynamix.com/Common/library/angular/angular.min.js"></script>
+    <script src="https://cdn.edynamix.com/Common/library/angular/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdn.edynamix.com/common/library/jquery/3.3.6/jquery-3.3.6.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" />
+</head>
+<body>
+    <div ng-app="Progressbar" ng-controller="ProgressCtrl" class="container">
+        <h3>Static</h3>
+        <div class="row">
+            <div class="col-sm-4"><uib-progressbar value="55"></uib-progressbar></div>
+            <div class="col-sm-4"><uib-progressbar class="progress-striped" value="22" type="warning">22%</uib-progressbar></div>
+            <div class="col-sm-4"><uib-progressbar class="progress-striped active" max="200" value="166" type="danger"><i>166 / 200</i></uib-progressbar></div>
+        </div>
+
+        <hr />
+        <h3>Dynamic <button type="button" class="btn btn-sm btn-primary" ng-click="random()">Randomize</button></h3>
+        <uib-progressbar max="max" value="dynamic"><span style="color:white; white-space:nowrap;">{{dynamic}} / {{max}}</span></uib-progressbar>
+
+        <small><em>No animation</em></small>
+        <uib-progressbar animate="false" value="5" type="success"><b>Some textSome text</b></uib-progressbar>
+
+        <h3>Dynamic <button type="button" class="btn btn-sm btn-primary" ng-click="change()">Change</button></h3>
+        <small>Animation</small>
+        <uib-progressbar value="testVal"><b>Some text</b></uib-progressbar>
+
+        <small><em>Object (changes type based on value)</em></small>
+        <uib-progressbar class="progress-striped active" value="dynamic" type="{{type}}">{{type}} <i ng-show="showWarning">!!! Watch out !!!</i></uib-progressbar>
+
+        <hr />
+        <h3>Stacked <button type="button" class="btn btn-sm btn-primary" ng-click="randomStacked()">Randomize</button></h3>
+        <uib-progress><uib-bar ng-repeat="bar in stacked track by $index" value="bar.value" type="{{bar.type}}"><span ng-hide="bar.value < 5">{{bar.value}}%</span></uib-bar></uib-progress>
+
+        <h3>Test <button tpye="button" class="btn" ng-click="updateData()">Get Data</button></h3>
+        <uib-progressbar value="vall"><b>Test</b></uib-progressbar>
+    </div>
+
+    <script>
+
+        $(function () {
+            console.log($('*'));
+        });
+
+        angular.module('Progressbar', ['ngAnimate', 'ui.bootstrap']);
+
+        angular.module('Progressbar')
+        .controller('ProgressCtrl', function ($scope, $timeout) {
+            var model = this;
+
+            $scope.vall = 50;
+
+            $scope.updateData = function () {
+                var temp = $scope.vall;
+                $scope.vall = 0;
+                $scope.vall = temp;
+            }
+
+            $timeout(function () { $scope.testVal = 100 }, 1000);
+
+            $scope.random = function () {
+                var value = Math.floor(Math.random() * 100 + 1);
+                var type;
+
+                if (value < 25) {
+                    type = 'success';
+                } else if (value < 50) {
+                    type = 'info';
+                } else if (value < 75) {
+                    type = 'warning';
+                } else {
+                    type = 'danger';
+                }
+
+                $scope.showWarning = type === 'danger' || type === 'warning';
+
+                $scope.dynamic = value;
+                $scope.type = type;
+            };
+
+            $scope.random();
+
+            $scope.randomStacked = function () {
+                $scope.stacked = [];
+                var types = ['success', 'info', 'warning', 'danger'];
+
+                for (var i = 0, n = Math.floor(Math.random() * 4 + 1) ; i < n; i++) {
+                    var index = Math.floor(Math.random() * 4);
+                    $scope.stacked.push({
+                        value: Math.floor(Math.random() * 30 + 1),
+                        type: types[index]
+                    });
+                }
+            };
+
+            $scope.randomStacked();
+        });
+    </script>
+    <script>
+        //$('uib-progressbar').each(function () {
+        //    var $bar = $(this);
+        //    var progress = setInterval(function () {
+
+        //        var currWidth = parseInt($bar.attr('aria-valuenow'));
+        //        var maxWidth = parseInt($bar.attr('aria-valuemax'));
+
+        //        //update the progress
+        //        $bar.width(currWidth + '%');
+        //        $bar.attr('aria-valuenow', currWidth + 10);
+
+        //        //clear timer when max is reach
+        //        if (currWidth >= maxWidth) {
+        //            clearInterval(progress);
+        //        }
+
+        //    }, 500);
+        //});
+    </script>
+</body>
+</html>

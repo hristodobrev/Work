@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2085B95D-D44A-4D73-9F6F-B245902CE575}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AngularJS_Tests</RootNamespace>
+    <AssemblyName>AngularJS Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="controllers\messages-controller.js" />
+    <Content Include="views\another-tests\messages.html" />
+    <Content Include="views\lession\04.angular-directives.html" />
+    <Content Include="views\lession\02.angular-expressions.html" />
+    <Content Include="views\lession\01.angular-intro.html" />
+    <Content Include="views\lession\03.angular-modules.html" />
+    <Content Include="views\lession\05.angular-model.html" />
+    <Content Include="views\lession\06.angular-data-binding.html" />
+    <Content Include="views\lession\07.angular-controllers.html" />
+    <Content Include="views\lession\08.angular-scopes.html" />
+    <Content Include="views\lession\09.angular-filters.html" />
+    <Content Include="views\lession\10.angular-services.html" />
+    <Content Include="views\lession\11.angular-http.html" />
+    <Content Include="views\lession\12.angular-tables.html" />
+    <Content Include="views\lession\13.angular-select.html" />
+    <Content Include="views\lession\15.angular-dom.html" />
+    <Content Include="views\lession\16.angular-events.html" />
+    <Content Include="views\lession\17.angular-forms.html" />
+    <Content Include="views\lession\18.angular-validation.html" />
+    <Content Include="views\lession\23.angular-routing.html" />
+    <Content Include="views\lession\19.angular-api.html" />
+    <Content Include="views\lession\24.angular-application.html" />
+    <Content Include="apps\base-app.js" />
+    <Content Include="apps\modules-app.js" />
+    <Content Include="views\another-tests\chart-test.html" />
+    <Content Include="controllers\api-controller.js" />
+    <Content Include="controllers\controllers-controller.js" />
+    <Content Include="controllers\data-binding-controller.js" />
+    <Content Include="controllers\directives-controller.js" />
+    <Content Include="controllers\dom-controller.js" />
+    <Content Include="controllers\events-controller.js" />
+    <Content Include="controllers\filters-controller.js" />
+    <Content Include="controllers\forms-controller.js" />
+    <Content Include="controllers\http-controller.js" />
+    <Content Include="controllers\model-controller.js" />
+    <Content Include="controllers\modules-controller.js" />
+    <Content Include="controllers\names-controller.js" />
+    <Content Include="controllers\scopes-controller.js" />
+    <Content Include="controllers\select-controller.js" />
+    <Content Include="controllers\services-controller.js" />
+    <Content Include="controllers\tables-controller.js" />
+    <Content Include="css\gauge-meter.css" />
+    <Content Include="directives\directives-directives.js" />
+    <Content Include="directives\modules-directives.js" />
+    <Content Include="directives\validation-directives.js" />
+    <Content Include="views\another-tests\doc.html" />
+    <Content Include="filters\filters-filter.js" />
+    <Content Include="filters\services-filter.js" />
+    <Content Include="views\lession\customers.aspx" />
+    <Content Include="views\another-tests\another.html" />
+    <Content Include="views\another-tests\Graph.html" />
+    <Content Include="views\another-tests\index.html" />
+    <Content Include="js\chart.min.js" />
+    <Content Include="js\jquery.AshAlom.gaugeMeter-2.0.0.min.js" />
+    <Content Include="views\another-tests\main.html" />
+    <Content Include="views\another-tests\Progrssbar-test.html" />
+    <Content Include="views\another-tests\react.html" />
+    <Content Include="views\another-tests\rest.html" />
+    <Content Include="views\another-tests\test.html" />
+    <Content Include="services\services-services.js" />
+    <Content Include="styles\main.css">
+      <DependentUpon>main.less</DependentUpon>
+    </Content>
+    <Content Include="styles\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="whole-apps\eShop\app.js" />
+    <Content Include="whole-apps\eShop\controllers\ads-controller.js" />
+    <Content Include="whole-apps\eShop\views\ads.txt" />
+    <Content Include="whole-apps\eShop\views\ads.html" />
+    <Content Include="whole-apps\eShop\views\index.html" />
+    <Content Include="whole-apps\eShop\views\main.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="styles\main.less" />
+    <Content Include="styles\main.css.map">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
+    <None Include="views\lession\customers.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>32529</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:32529/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties customers_1json__JSONSchema="http://json.schemastore.org/bower" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

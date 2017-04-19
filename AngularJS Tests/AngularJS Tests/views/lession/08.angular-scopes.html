@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Scopes</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp">
+        <div class="container" ng-controller="myCtrl">
+            <h3>Names</h3>
+            <ul>
+                <li ng-repeat="name in names">
+                    {{name}}
+                </li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <h3>Root scope color</h3>
+            <p>{{color}}</p>
+
+            <h3>myCtrl scope color</h3>
+            <p ng-controller="myCtrl">{{color}}</p>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/scopes-controller.js"></script>
+    <script>
+        app.run(function ($rootScope) {
+            $rootScope.color = 'blue';
+        });
+    </script>
+</body>
+</html>

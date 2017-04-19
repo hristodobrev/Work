@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Modules</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>Adding Controller</h3>
+            <p>{{firstName + ' ' + lastName}}</p>
+        </div>
+        <div class="container">
+            <h3>Adding Directive</h3>
+            <p test-directive></p>
+        </div>
+    </main>
+
+    <script src="apps/modules-app.js"></script>
+    <script src="controllers/modules-controller.js"></script>
+    <script src="directives/modules-directives.js"></script>
+</body>
+</html>

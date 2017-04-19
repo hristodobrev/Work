@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="https://cdn.devedynamix.com/common/library/angular/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+</head>
+<body>
+    <main ng-app="app" ng-controller="HomeController as home">
+        <div class="container" ng-repeat="article in home.articles">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.content }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Variable using this</h3>
+            <p>{{ home.variable }}</p>
+            <input ng-model="model.inputValue" />
+            <p>{{ model.inputValue }}</p>
+        </div>
+
+        <div class="container">
+            <h3>These data is loaded from the home factory</h3>
+            <h4>People:</h4>
+            <p ng-repeat="person in home.people"> - {{ person.name }}, <em>{{ person.country }}</em></p>
+        </div>
+
+        <div class="container test" ng-view>
+
+        </div>
+    </main>
+
+    <script src="apps/app.module.js"></script>
+    <script src="factories/home.factory.js"></script>
+    <script src="controllers/home.controller.js"></script>
+    <script src="controllers/test.controller.js"></script>
+    <script>
+        function func() {
+            return foo();
+
+            function foo() {
+                return 'foo-bottom';
+            };
+        }
+
+        func();
+    </script>
+</body>
+</html>

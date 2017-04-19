@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Application</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="shoppingList" ng-controller="shoppingListController">
+        <div class="container">
+            <h3>Shopping List</h3>
+            <p>
+                <ul style="list-style-type:none">
+                    <li ng-repeat="product in products">
+                        <strong ng-click="removeProduct($index)" class="click">&times;</strong>
+                        {{ product }}
+                    </li>
+                </ul>
+            </p>
+            <p>
+                <input type="text" ng-model="product" placeholder="Add product..."/>
+                <button ng-click="addProduct()">Add</button>
+            </p>
+            <p style="color: red">{{ errorText }}</p>
+        </div>
+    </main>
+
+    <script>
+        let app = angular.module('shoppingList', []);
+
+        app.controller('shoppingListController', function ($scope) {
+            $scope.products = ['Milk', 'Bread', 'Cheese'];
+            $scope.addProduct = function () {
+                $scope.errorText = '';
+
+                if (!$scope.product) {
+                    $scope.errorText = 'Cannot add empty product.';
+                    return;
+                }
+
+                if ($scope.products.includes($scope.product)) {
+                    $scope.errorText = 'This product already exists.';
+                    return;
+                }
+
+                $scope.products.push($scope.product);
+                $scope.product = '';
+            }
+
+            $scope.removeProduct = function (x) {
+                $scope.errorText = '';
+                $scope.products.splice(x, 1);
+            }
+        });
+    </script>
+</body>
+</html>

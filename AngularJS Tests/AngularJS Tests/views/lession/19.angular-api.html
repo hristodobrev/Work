@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>Angular LowerCase and UpperCase</h3>
+            <p>Name: {{ name }}</p>
+            <p>Lower case name: {{ lowerName }}</p>
+            <p>Upper case name: {{ upperName }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Is String</h3>
+            <p>String: {{ str }} | Number: {{ num }}</p>
+            <p>angular.isString({{ str }}) = {{ strIsString }}</p>
+            <p>angular.isString({{ num }}) = {{ numIsString }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Is Number</h3>
+            <p>String: {{ str }} | Number: {{ num }}</p>
+            <p>angular.isNumber({{ str }}) = {{ strIsNumber }}</p>
+            <p>angular.isNumber({{ num }}) = {{ numIsNumber }}</p>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/api-controller.js"></script>
+</body>
+</html>

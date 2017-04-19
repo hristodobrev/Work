@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Events</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>Mouse Events</h3>
+            <p ng-mousemove="hovered()" ng-click="clicked()">Hover over me and click me.</p>
+            <p>Hovers: {{ hoverCount }}</p>
+            <p>Clicks: {{ clickCount }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Toggle, True/False</h3>
+            <p>
+                <strong class="click" ng-click="toggleMenu()">
+                    <span ng-show="!showMenu">Show Cars</span>
+                    <span ng-show="showMenu">Hide Cars</span>
+                </strong>
+            </p>
+            <div ng-show="showMenu">
+                <h4>Cars</h4>
+                <ul>
+                    <li>Subaru</li>
+                    <li>Nissan</li>
+                    <li>Mitsubishi</li>
+                    <li>Toyota</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="container test">
+            <h3>AngularJS Events</h3>
+            <p ng-copy="copy($event)">Try to copy me</p>
+            <p ng-show="copied">Nice try :D</p>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/events-controller.js"></script>
+</body>
+</html>

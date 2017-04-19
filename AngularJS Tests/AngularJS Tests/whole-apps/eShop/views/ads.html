@@ -1,0 +1,10 @@
+﻿<div>
+    <h1>Browse the advertisements</h1>
+    <ul>
+        <li ng-repeat="ad in model.ads">
+            <p>{{ ad.title }}</p>
+            <p>{{ ad.description }}</p>
+        </li>
+    </ul>
+    <button ng-click="model.getData()">Get Data!</button>
+</div>

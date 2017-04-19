@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Filters</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>Adding Filters To Expressions</h3>
+            <p>The name is {{firstName | uppercase}} {{lastName | lowercase}}</p>
+        </div>
+
+        <div class="container">
+            <h3>Adding Filters To Directives</h3>
+            <h4>Ordered by country:</h4>
+            <ul>
+                <li ng-repeat="person in people | orderBy:'country'">
+                    {{ person.name + ', ' + person.country }}
+                </li>
+            </ul>
+            <h4>Ordered by name:</h4>
+            <ul>
+                <li ng-repeat="person in people | orderBy:'name'">
+                    {{ person.name + ', ' + person.country }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <h3>The Currency Filter</h3>
+            <p>Price: {{ price | currency }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Filter : 'i'</h3>
+            <ul>
+                <li ng-repeat="person in people | filter : 'i'">
+                    {{ person.name + ', ' + person.country }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <h3>Filter list from user input</h3>
+            <p>Search: <input type="text" ng-model="searchKey" /></p>
+            <ul>
+                <li ng-repeat="name in names | filter : searchKey">
+                    {{ name }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <h3>Order Table</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="click" ng-click="orderKey = 'name'">Name</th>
+                        <th class="click" ng-click="orderKey = 'country'">Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="person in people | orderBy: orderKey">
+                        <td>{{ person.name }}</td>
+                        <td>{{ person.country }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container">
+            <h3>Custom Filters</h3>
+            <ul>
+                <li ng-repeat="x in names">
+                    {{ x | myFilter}}
+                </li>
+            </ul>
+        </div>
+
+        <div class="container test">
+            <h3>Custom Filters</h3>
+            <ul>
+                <li ng-repeat="x in names | singleWord">
+                    {{ x }}
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/filters-controller.js"></script>
+    <script src="filters/filters-filter.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap2/bootstrap-switch.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/js/bootstrap-switch.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @using ResManager = Test.MVC.Utilities.Localization.ResManager;
+</head>
+<body>
+    @{
+        string lang = System.Threading.Thread.CurrentThread.CurrentCulture.ToString().ToLower();
+    }
+    <div class="navbar navbar-inverse navbar-fixed-top" ng-app="localization" ng-controller="LocalizationController as model">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(ResManager.GetCaption("test"), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/@lang/">@ResManager.GetCaption("Home")</a></li>
+                    <li><a href="/@lang/Home/About">@ResManager.GetCaption("About")</a></li>
+                    <li><a href="/@lang/Home/Contact" class="">@ResManager.GetCaption("Contact")</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/en-us/">EN</a></li>
+                    <li><a href="/bg-bg/">BG</a></li>
+                    <li><a href="/fr-fr/">FR</a></li>
+                </ul>
+                <form action="/Account/LogOff" class="navbar-right" id="logoutForm" method="post">
+                    <input name="__RequestVerificationToken" type="hidden" value="RvxRjX33YmLRq2OK_ur-f2mcrcE7KY-s9wq3AUS2_oQbsBlVGrkC-vBRfYZxgsQua2w-RUfwt-aDoASlHogoYqOyr9_OccBFzACaEnw9aozRzl70xsryEmcClOo7IGh4UaXtl3lrxE4axNJKB9ujKg2">    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="@lang/Manage" title="Manage">@ResManager.GetCaption("Hello"), ickata2112@abv.bg!</a>
+                        </li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">@ResManager.GetCaption("Log off")</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

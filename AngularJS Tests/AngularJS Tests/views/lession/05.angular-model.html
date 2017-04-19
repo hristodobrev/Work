@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Model</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+    <style>
+        input.ng-invalid {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>Using ng-model Directive</h3>
+            <p>Name: <input ng-model="name" /></p>
+            <p>You entered: <strong>{{name}}</strong></p>
+        </div>
+
+        <div class="container">
+            <form name="emailForm">
+                <h3>Validating E-mail</h3>
+                <p>
+                    Email:
+                    <input type="email" name="address" ng-model="emailText" />
+                    <span ng-show="emailForm.address.$error.email">Not a valid e-mail address</span>
+                </p>
+            </form>
+        </div>
+
+        <div class="container">
+            <h3>Application Status</h3>
+            <form name="statusForm">
+                <div>
+                    Email:
+                    <input type="email" name="address" ng-model="text" />
+                    <h4>Status</h4>
+                    <p>Valid: {{statusForm.address.$valid}}</p>
+                    <p>Dirty: {{statusForm.address.$dirty}}</p>
+                    <p>Touched: {{statusForm.address.$touched}}</p>
+                </div>
+            </form>
+        </div>
+
+        <div class="container test">
+            <h3>Testing ng-show</h3>
+            <p>Show value: <input type="text" ng-model="showValue" /></p>
+            <p ng-show="showValue == secretWord">You have broken the secret!</p>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/model-controller.js"></script></script>
+</body>
+</html>

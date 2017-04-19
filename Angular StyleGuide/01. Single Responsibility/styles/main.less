@@ -1,0 +1,50 @@
+﻿body {
+    background: #f3f3f3;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    .container {
+        background: #fff;
+        padding: 1em 2em;
+        margin: 1.5em 0.5em;
+        box-shadow: 1px 1px 5px 0 #d3d3d3;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        border-left: 3px solid #d3d3d3;
+
+        &:hover {
+            /*filter: brightness(95%);
+            cursor: pointer;*/
+        }
+
+        &.test {
+            background: #ffc;
+            border-left: 3px solid #ee0;
+        }
+
+        h3 {
+            margin-top: 0.5em;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #999;
+        }
+
+        table {
+            border-collapse: collapse;
+
+            td, th {
+                text-align: left;
+                padding: 0.3em 1em;
+                border: 1px solid #d3d3d3;
+            }
+        }
+
+        .click {
+            cursor: pointer;
+
+            &:hover {
+                filter: opacity(50%);
+            }
+        }
+    }
+}

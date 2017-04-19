@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Controllers</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp">
+        <div class="container" ng-controller="myCtrl">
+            <h3>AngularJS Controllers</h3>
+            <p>First Name: <input type="text" ng-model="firstName" /></p>
+            <p>Last Name: <input type="text" ng-model="lastName" /></p>
+            <p ng-show="firstName && lastName">
+                Full Name:
+                <input type="text" disabled="disabled" value="{{fullName()}}" />
+            </p>
+        </div>
+
+        <div class="container" ng-controller="namesCtrl">
+            <h3>Names Controller</h3>
+            <ul>
+                <li ng-repeat="x in names">
+                    {{x.name + ', ' + x.country}}
+                </li>
+            </ul>
+        </div>
+
+        <div class="container test" ng-controller="myAnotherCtrl">
+            <h3>Another Controller</h3>
+            <p>{{firstName + ' ' + lastName}}</p>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/controllers-controller.js"></script>
+    <script src="controllers/names-controller.js"></script>
+</body>
+</html>

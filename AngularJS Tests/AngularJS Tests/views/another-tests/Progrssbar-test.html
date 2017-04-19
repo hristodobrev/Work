@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Progrssbar Test</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/jquery.AshAlom.gaugeMeter-2.0.0.min.js"></script>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="css/gauge-meter.css" rel="stylesheet" />
+    <style>
+        .GaugeMeter {
+            position: Relative;
+            text-align: Center;
+            overflow: Hidden;
+            cursor: Default;
+            display: inline-block;
+        }
+
+            .GaugeMeter SPAN, .GaugeMeter B {
+                width: 54%;
+                position: Absolute;
+                text-align: Center;
+                display: Inline-Block;
+                color: RGBa(0,0,0,.8);
+                font-weight: 100;
+                font-family: "Open Sans", Arial;
+                overflow: Hidden;
+                white-space: NoWrap;
+                text-overflow: Ellipsis;
+                margin: 0 23%;
+            }
+
+            .GaugeMeter[data-style="Semi"] B {
+                width: 80%;
+                margin: 0 10%;
+            }
+
+            .GaugeMeter S, .GaugeMeter U {
+                text-decoration: None;
+                font-size: .60em;
+                font-weight: 200;
+                opacity: .6;
+            }
+
+            .GaugeMeter B {
+                color: #000;
+                font-weight: 200;
+                opacity: .8;
+            }
+    </style>
+
+    <style>
+        .main {
+            width: 400px;
+            margin: 20px auto;
+        }
+
+        .bar {
+            color: white;
+            clear: both;
+            height: 84px;
+            box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+        }
+
+        .bar-content {
+            /*box-shadow: -3px 0 7px rgba(0,0,0,0.2);*/
+            margin-top: 18px;
+            margin-left: -16px;
+            display: inline-block;
+            width: 89%;
+            padding: 5px 0;
+            overflow: hidden;
+        }
+
+        .bar-text {
+            box-shadow: -3px 0 7px rgba(0,0,0,0.2);
+            width: 100%;
+            height: 100%;
+            font-size: 15px;
+            padding: 10px 21px;
+        }
+
+        .GaugeMeter {
+            margin-left: -50px;
+            margin-top: -13px;
+        }
+
+        .blue {
+            background: #89d0ff;
+            /*background: #cadeff;*/
+        }
+
+        .red {
+            background: #fc6a6a;
+            /*background: #ffabab;*/
+        }
+
+        .green {
+            background: #97e875;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="bar blue">
+            <div class="GaugeMeter" data-percent="76" data-width="4" data-size="110" data-color="#89d0ff">
+            </div>
+            <div class="bar-content">
+                <div class="bar-text">
+                    Some Text
+                </div>
+            </div>
+        </div>
+        <div class="bar red">
+            <div class="GaugeMeter" data-percent="0" data-width="4" data-size="110" data-color="#fc6a6a">
+            </div>
+            <div class="bar-content">
+                <div class="bar-text">
+                    Some Text
+                </div>
+            </div>
+        </div>
+        <div class="bar green">
+            <div class="GaugeMeter" data-percent="100" data-width="4" data-size="110" data-color="#97e875">
+            </div>
+            <div class="bar-content">
+                <div class="bar-text">
+                    Some Text
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(".GaugeMeter").gaugeMeter();
+    </script>
+
+</body>
+</html>

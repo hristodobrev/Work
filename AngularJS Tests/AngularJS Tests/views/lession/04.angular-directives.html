@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Directives</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+    <style>
+        .li-item:before {
+            content: '-';
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl" ng-init="quantity=1;price=5">
+        <div class="container">
+            <h3>Using ng-repeat</h3>
+            <ul>
+                <h4>People</h4>
+                <li ng-repeat="person in people">
+                    {{person.name + ', ' + person.country}}
+                </li>
+            </ul>
+            <div>
+                <h4>People</h4>
+                <p class="li-item" ng-repeat="person in people">
+                    {{person.name + ', ' + person.country}}
+                </p>
+            </div>
+        </div>
+
+        <div class="container">
+            <h3>Data Binding</h3>
+            <p>Quantity: <input type="text" ng-model="quantity" /></p>
+            <p>Costs: <input type="text" ng-model="price" /></p>
+
+            <p>Total in dollar: {{quantity * price}}</p>
+        </div>
+
+        <div class="container">
+            <h3>Using Directives</h3>
+            <!--<test-directive></test-directive>-->
+            <p globalize-format data-value="dataValue">blablba</p>
+            <p class="test-directive"></p>
+            <!-- directive: test-directive -->
+            <format-data data-prepend="pre" data-append="app"> Text </format-data>
+            <div circle radius="50" color="lightblue" thickness="2" percent="78" data-text="Test"></div>
+        </div>
+    </div>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/directives-controller.js"></script>
+    <script src="directives/directives-directives.js"></script>
+</body>
+</html>

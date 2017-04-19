@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Expressions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+</head>
+<body>
+    <main ng-app="" ng-init="color='blue'">
+        <div class="container">
+            <h3>Change Color</h3>
+            <p>
+                Color:
+                <input type="text" ng-model="color" value="{{color}}"
+                       style="color: {{color}}; background-color: light{{color}}" />
+            </p>
+        </div>
+
+        <div class="container">
+            <h3>Price Calculator</h3>
+            <p>Price: <input type="number" ng-model="price" placeholder="Enter price..." /></p>
+            <p>Quantity: <input type="number" ng-model="quantity" placeholder="Enter quantity..." /></p>
+            <p>Total price: {{price * quantity}}</p>
+        </div>
+
+        <div class="container" ng-init="person={firstName: 'John', lastName: 'Doe'}">
+            <h3>Person Object</h3>
+            <p>The name is <span>{{person.firstName + " " + person.lastName}}</span></p>
+        </div>
+
+        <div class="container" ng-init="points=[1,34,25,76,3,8]">
+            <h3>Arrays</h3>
+            <p>points[0]: {{points[0]}}</p>
+            <p>points[1]: {{points[1]}}</p>
+            <p>points[2]: {{points[2]}}</p>
+            <p>points: <span ng-bind="points"></span></p>
+        </div>
+    </main>
+</body>
+</html>

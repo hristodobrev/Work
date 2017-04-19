@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Tables</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>Displaying Data in a Table</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th class="click" ng-click="reorderBy('Name')">
+                            Name
+                            <span class="glyphicon glyphicon-triangle-{{ reverse ? 'bottom' : 'top' }}" ng- ng-show="orderKey == 'Name'"></span>
+                        </th>
+                        <th class="click" ng-click="reorderBy('Country')">
+                            Country
+                            <span class="glyphicon glyphicon-triangle-{{ reverse ? 'bottom' : 'top' }}" ng- ng-show="orderKey == 'Country'"></span>
+                        </th>
+                        <th class="click" ng-click="reorderBy('City')">
+                            City
+                            <span class="glyphicon glyphicon-triangle-{{ reverse ? 'bottom' : 'top' }}" ng- ng-show="orderKey == 'City'"></span>
+                        </th>
+                        <th class="click" ng-click="reorderBy('Age')">
+                            Age
+                            <span class="glyphicon glyphicon-triangle-{{ reverse ? 'bottom' : 'top' }}" ng ng-show="orderKey == 'Age'"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in names | orderBy : orderKey : reverse">
+                        <td ng-if="$odd">{{ $index + 1}}</td>
+                        <td ng-if="$even" style="color: red">{{ $index + 1 }}</td>
+                        <td>{{ x.Name }}</td>
+                        <td>{{ x.Country }}</td>
+                        <td>{{ x.City }}</td>
+                        <td>{{ x.Age }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/tables-controller.js"></script>
+</body>
+</html>

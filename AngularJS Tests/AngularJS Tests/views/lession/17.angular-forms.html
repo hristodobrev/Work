@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Forms</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <main ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+            <h3>Data-Binding</h3>
+            <form>
+                <p>
+                    First Name:
+                    <input type="text" ng-model="firstName" placeholder="Enter first name.." />
+                </p>
+                <p ng-show="firstName">Hello, {{ firstName }}</p>
+            </form>
+        </div>
+
+        <div class="container">
+            <h3>Checkbox</h3>
+            <p>
+                Check to show a paragraph:
+                <input type="checkbox" ng-model="showParagraph" />
+            </p>
+            <p ng-show="showParagraph">I can be hidden or shown</p>
+        </div>
+
+        <div class="container">
+            <h3>Radiobuttons</h3>
+            <p>Pick a topic:</p>
+            <p><label><input type="radio" ng-model="radioOption" value="dogs">Dogs</label></p>
+            <p><label><input type="radio" ng-model="radioOption" value="tuts">Tutorials</label></p>
+            <p><label><input type="radio" ng-model="radioOption" value="cars">Cars</label></p>
+            <p>Selected: {{ radioOption }}</p>
+        </div>
+
+        <div class="container">
+            <h3>Selectbox</h3>
+            <p>
+                Select a topic:
+                <select ng-model="selectedOption">
+                    <option value="dogs">Dogs
+                    <option value="tuts">Tutorials
+                    <option value="cars">Cars
+                </select>
+            </p>
+            <p>You have selected: {{ selectedOption }}</p>
+        </div>
+
+        <div class="container">
+            <h3>An AngularJS Form Example</h3>
+            <form novalidate>
+                <p>
+                    <label>
+                        First Name:<br>
+                        <input type="text" ng-model="user.firstName" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Last Name:<br>
+                        <input type="text" ng-model="user.lastName" />
+                    </label>
+                </p>
+                <p>
+                    <button ng-click="reset()">Reset</button>
+                </p>
+                <p>Form = {{ user }}</p>
+                <p>Master = {{ master }}</p>
+            </form>
+        </div>
+    </main>
+
+    <script src="apps/base-app.js"></script>
+    <script src="controllers/forms-controller.js"></script>
+</body>
+</html>

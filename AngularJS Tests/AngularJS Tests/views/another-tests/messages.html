@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Messages</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-app="Messages">
+    <div class="container" ng-controller="MessagesController as model">
+        <button ng-click="toggle = !toggle">Inbox</button>
+        <div ng-show="toggle">
+            <p>My Inbox:</p>
+            <ul>
+                <li ng-repeat="message in model.emails.messages">
+                    <p>From: {{ message.from }}</p>
+                    <p>Subject: {{ message.subject }}</p>
+                    <p>Sent: {{ message.sent | date : 'MMM d, y hh:mm:ss a' }}</p>
+                    <p><button ng-click="model.deleteMessage($index)">Delete Message</button></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="../../controllers/messages-controller.js"></script>
+</body>
+</html>
