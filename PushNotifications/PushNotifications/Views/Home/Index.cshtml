@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row" ng-app="PushNotifications" ng-cloak>
+    <div ng-controller="PushNotificationController as model">
+        {{ model.test }}
+    </div>
+</div>
+
+<script>
+    (function () {
+        angular.module('PushNotifications', []);
+
+        angular.module('PushNotifications').controller('PushNotificationController', PushNotificationController);
+
+        function PushNotificationController() {
+            let model = this;
+
+            model.test = 'TEssstt'
+        }
+    })();
+</script>
